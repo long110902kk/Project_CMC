@@ -1,0 +1,354 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Nguyễn Văn A",
+      "age": "99",
+      "phone": "0123 456 789"
+    },
+    {
+      "id": 2,
+      "name": "Trần Thị B",
+      "age": 22,
+      "phone": "0987 654 321"
+    },
+    {
+      "id": 3,
+      "name": "Lê Văn C",
+      "age": 21,
+      "phone": "0369 987 654"
+    },
+    {
+      "id": 4,
+      "name": "Phạm Thị D",
+      "age": 19,
+      "phone": "0765 432 109"
+    },
+    {
+      "id": 5,
+      "name": "Hoàng Văn E",
+      "age": 23,
+      "phone": "0555 111 222"
+    },
+    {
+      "id": 6,
+      "name": "Mai Thị F",
+      "age": 20,
+      "phone": "0333 444 555"
+    },
+    {
+      "id": 7,
+      "name": "Vũ Văn G",
+      "age": 21,
+      "phone": "0888 999 000"
+    },
+    {
+      "id": 8,
+      "name": "Đặng Thị H",
+      "age": 22,
+      "phone": "0111 333 777"
+    },
+    {
+      "id": 9,
+      "name": "Ngô Văn I",
+      "age": 19,
+      "phone": "0555 999 888"
+    },
+    {
+      "id": 10,
+      "name": "Trịnh Thị K",
+      "age": 20,
+      "phone": "0222 888 777"
+    },
+    {
+      "id": 11,
+      "name": "Lý Văn L",
+      "age": 21,
+      "phone": "0777 888 999"
+    },
+    {
+      "id": 12,
+      "name": "Đỗ Thị M",
+      "age": 22,
+      "phone": "0110 101 010"
+    },
+    {
+      "id": 13,
+      "name": "Vương Thị N",
+      "age": 20,
+      "phone": "0505 123 456"
+    },
+    {
+      "id": 14,
+      "name": "Tô Văn O",
+      "age": 22,
+      "phone": "0777 123 456"
+    },
+    {
+      "id": 15,
+      "name": "Đinh Thị P",
+      "age": 21,
+      "phone": "0111 999 777"
+    },
+    {
+      "id": 16,
+      "name": "Phan Văn Q",
+      "age": 23,
+      "phone": "0999 888 777"
+    },
+    {
+      "id": 17,
+      "name": "Nguyễn Văn R",
+      "age": 20,
+      "phone": "0888 777 666"
+    },
+    {
+      "id": 18,
+      "name": "Trần Thị S",
+      "age": 22,
+      "phone": "0666 555 444"
+    },
+    {
+      "id": 19,
+      "name": "Lê Thị T",
+      "age": 21,
+      "phone": "0777 111 333"
+    },
+    {
+      "id": 20,
+      "name": "Phạm Văn U",
+      "age": 19,
+      "phone": "0555 333 111"
+    },
+    {
+      "id": 21,
+      "name": "Hoàng Thị V",
+      "age": 20,
+      "phone": "0777 888 555"
+    },
+    {
+      "id": 22,
+      "name": "Mai Văn X",
+      "age": 21,
+      "phone": "0555 777 222"
+    },
+    {
+      "id": 23,
+      "name": "Vũ Thị Y",
+      "age": 22,
+      "phone": "0777 111 444"
+    },
+    {
+      "id": 24,
+      "name": "Đặng Văn Z",
+      "age": 20,
+      "phone": "0888 555 666"
+    },
+    {
+      "id": 25,
+      "name": "Ngô Văn K",
+      "age": 21,
+      "phone": "0999 666 777"
+    },
+    {
+      "id": 26,
+      "name": "Trịnh Văn L",
+      "age": 22,
+      "phone": "0666 555 444"
+    },
+    {
+      "id": 27,
+      "name": "Lý Văn M",
+      "age": 23,
+      "phone": "0111 777 888"
+    },
+    {
+      "id": 28,
+      "name": "Đỗ Thị N",
+      "age": 20,
+      "phone": "0555 222 333"
+    },
+    {
+      "id": 29,
+      "name": "Vương Văn O",
+      "age": 21,
+      "phone": "0111 777 555"
+    },
+    {
+      "id": 30,
+      "name": "Tô Văn P",
+      "age": 19,
+      "phone": "0777 555 444"
+    },
+    {
+      "id": 31,
+      "name": "Đinh Thị Q",
+      "age": 20,
+      "phone": "0555 666 999"
+    },
+    {
+      "id": 32,
+      "name": "Phan Thị R",
+      "age": 21,
+      "phone": "0888 444 555"
+    },
+    {
+      "id": 33,
+      "name": "Nguyễn Văn S",
+      "age": 22,
+      "phone": "0111 333 666"
+    },
+    {
+      "id": 34,
+      "name": "Trần Thị T",
+      "age": 23,
+      "phone": "0999 777 666"
+    },
+    {
+      "id": 35,
+      "name": "Lê Văn U",
+      "age": 20,
+      "phone": "0777 888 555"
+    },
+    {
+      "id": 36,
+      "name": "Phạm Văn V",
+      "age": 22,
+      "phone": "0111 555 777"
+    },
+    {
+      "id": 37,
+      "name": "Hoàng Thị W",
+      "age": 21,
+      "phone": "0777 333 666"
+    },
+    {
+      "id": 38,
+      "name": "Mai Văn X",
+      "age": 20,
+      "phone": "0555 888 777"
+    },
+    {
+      "id": 39,
+      "name": "Vũ Thị Y",
+      "age": 21,
+      "phone": "0777 111 666"
+    },
+    {
+      "id": 40,
+      "name": "Đặng Văn Z",
+      "age": 22,
+      "phone": "0999 666 555"
+    },
+    {
+      "id": 41,
+      "name": "Ngô Văn K",
+      "age": 20,
+      "phone": "0555 444 888"
+    },
+    {
+      "id": 42,
+      "name": "Trịnh Văn L",
+      "age": 21,
+      "phone": "0111 555 666"
+    },
+    {
+      "id": 43,
+      "name": "Lý Văn M",
+      "age": 22,
+      "phone": "0777 555 666"
+    },
+    {
+      "id": 44,
+      "name": "Đỗ Thị N",
+      "age": 23,
+      "phone": "0111 666 777"
+    },
+    {
+      "id": 45,
+      "name": "Vương Văn O",
+      "age": 20,
+      "phone": "0555 777 888"
+    },
+    {
+      "id": 46,
+      "name": "Tô Văn P",
+      "age": 21,
+      "phone": "0777 333 444"
+    },
+    {
+      "id": 47,
+      "name": "Đinh Thị Q",
+      "age": 22,
+      "phone": "0888 444 777"
+    },
+    {
+      "id": 48,
+      "name": "Phan Thị R",
+      "age": 23,
+      "phone": "0111 555 666"
+    },
+    {
+      "id": 49,
+      "name": "Nguyễn Văn S",
+      "age": 20,
+      "phone": "0555 666 777"
+    },
+    {
+      "id": 50,
+      "name": "Trần Thị T",
+      "age": 21,
+      "phone": "0999 777 888"
+    },
+    {
+      "name": "Garrador",
+      "age": "11",
+      "phone": "0123456789",
+      "id": 52
+    },
+    {
+      "name": "chu2",
+      "age": "11",
+      "phone": "0154255225",
+      "id": 53
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1,
+      "name": "Teacher 1",
+      "email": "teacher1@example.com",
+      "password": "1"
+    },
+    {
+      "id": 2,
+      "name": "Teacher 2",
+      "email": "teacher2@example.com",
+      "password": "2"
+    },
+    {
+      "name": "Duong Hai Long",
+      "email": "longdhhe161343@fpt.edu.vn",
+      "password": "1",
+      "id": 3
+    },
+    {
+      "name": "Long Duong Hai",
+      "email": "duonghailong785@gmail.com",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "name": "long",
+      "email": "abc@gmail.com",
+      "password": "1",
+      "id": 5
+    },
+    {
+      "name": "Long hai",
+      "email": "ghj@gmail.com",
+      "password": "1",
+      "id": 6
+    }
+  ]
+}
