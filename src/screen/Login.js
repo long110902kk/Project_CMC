@@ -1,27 +1,15 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css";
-import DefaultTemplate from '../template/DefaultTemplate';
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
-
-    //   const validate = () => {
-    //     let result = true;
-    //     if (email === '' || email === null) {
-    //       result = false;
-    //       console.log("ko nhap");
-    //       toast.warning('Please Enter email');
-    //     }
-    //     if (password === '' || password === null) {
-    //       result = false;
-    //       toast.warning('Please Enter Password');
-    //     }
-    //     return result;
-    //   }
+    useEffect(()=>{
+        sessionStorage.clear();
+    })
 
     const proceedLogin = (e) => {
         e.preventDefault();
@@ -35,7 +23,8 @@ const Login = () => {
             .then((data) => {
                 if (data.length > 0) {
                     alert("Login successfully!");
-                    navigate('/');
+                    sessionStorage.setItem('email', email); 
+                    navigate('/home');
                 } else {
                     alert("Invalid username or password. Please try again.");
                 }
@@ -46,7 +35,6 @@ const Login = () => {
     }
 
     return (
-        <DefaultTemplate>
             <section className="vh-100 gradient-custom">
                 <div className="container py-5 h-100">
                     <div className="row d-flex justify-content-center align-items-center h-100">
@@ -69,14 +57,12 @@ const Login = () => {
                                             <input type="password" id="typePasswordX" className="form-control form-control-lg" value={password} onChange={(e) => setPassword(e.target.value)} />
                                         </div>
 
-                                        <p className="small mb-5 pb-lg-2"><a className="text-white-50" href="#!">Forgot password?</a></p>
-
                                         <button className="btn btn-outline-light btn-lg px-5" type="submit" onClick={proceedLogin}>Login</button>
 
                                     </div>
 
                                     <div>
-                                        <p className="mb-0">Don't have an account? <a href="#!" className="text-white-50 fw-bold">Sign Up</a></p>
+                                        <p className="mb-0">Don't have an account? <a href="/register" className="text-white-50 fw-bold">Sign Up</a></p>
                                     </div>
 
                                 </div>
@@ -85,7 +71,6 @@ const Login = () => {
                     </div>
                 </div>
             </section>
-        </DefaultTemplate>
     );
 }
 
