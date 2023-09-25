@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import DefaultTemplate from '../template/DefaultTemplate';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -55,7 +54,7 @@ const Register = () => {
         .then((result) => {
           console.log(result.data);
           alert('success');
-          navigate('/login');
+          navigate('/');
         })
         .catch((err) => {
           console.error(err);
@@ -67,7 +66,6 @@ const Register = () => {
 
 
   return (
-    <DefaultTemplate>
       <section className="vh-100" style={{ backgroundColor: '#eee' }}>
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -129,7 +127,6 @@ const Register = () => {
           </div>
         </div>
       </section>
-    </DefaultTemplate>
   );
 };
 
