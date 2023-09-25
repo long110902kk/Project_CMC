@@ -5,15 +5,20 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import { PencilSquare, Trash3Fill } from 'react-bootstrap-icons';
 import ReactPaginate from 'react-paginate';
+import { CSVLink } from "react-csv";
+import { toast } from 'react-toastify';
+import Papa from "papaparse";
 
 const Post = () => {
     const [students, setStudents] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [searchText, setSearchText] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const itemsPerPage = 10; // Số lượng mục trên mỗi trang
+    const itemsPerPage = 10;
+    const [sortBy, setSortBy] = useState("asc"); 
+    const [sortField, setSortField] = useState("id"); 
+    const [dataExport, setDataExport] = useState([]);
 
-    // Call API lấy danh sách sinh viên
     useEffect(() => {
         axios.get('http://localhost:9999/students')
             .then(function (response) {
@@ -25,18 +30,33 @@ const Post = () => {
     }, []);
 
     const pageCount = Math.ceil(students.length / itemsPerPage);
-
     const offset = currentPage * itemsPerPage;
     const currentPageData = searchResults.length > 0 ? searchResults : students.slice(offset, offset + itemsPerPage);
 
-    // Sort
-    const sortStu = (type) => {
-        const newSort = [...students];
-        if (type === 'id')
-            newSort.sort((a, b) => b.id - a.id);
-        if (type === 'name')
-            newSort.sort((a, b) => a.name > b.name ? 1 : -1);
-        setStudents(newSort);
+    const handleSort = (order, field) => {
+        const sortedStudents = [...students];
+
+        if (field === "id") {
+            sortedStudents.sort((a, b) => {
+                if (order === "asc") {
+                    return a.id - b.id;
+                } else {
+                    return b.id - a.id;
+                }
+            });
+        } else if (field === "name") {
+            sortedStudents.sort((a, b) => {
+                if (order === "asc") {
+                    return a.name.localeCompare(b.name);
+                } else {
+                    return b.name.localeCompare(a.name);
+                }
+            });
+        }
+
+        setStudents(sortedStudents);
+        setSortBy(order);
+        setSortField(field);
     }
 
     function handeleDelete(id) {
@@ -49,8 +69,7 @@ const Post = () => {
 
         axios.delete(`http://localhost:9999/students/${id}`)
             .then(res => {
-                alert('Xóa thành công');
-                // Sau khi xóa, cập nhật danh sách sinh viên
+                toast.success('Xóa thành công');
                 const updatedStudents = students.filter(student => student.id !== id);
                 setStudents(updatedStudents);
             })
@@ -68,6 +87,55 @@ const Post = () => {
         setSearchResults(filteredStudents);
     };
 
+    const getUserExport = (event, done) => {
+        let result = [];
+        if (students && students.length > 0) {
+            result.push(["Id", "Name", "Age", "Phone"]);
+            students.map((item, index) => {
+                let arr = [];
+                arr[0] = item.id
+                arr[1] = item.name
+                arr[2] = item.age
+                arr[3] = item.phone
+                result.push(arr);
+            })
+            setDataExport(result);
+            done();
+        }
+    }
+
+    const handleImportCSV = (event) => {
+        if (event.target && event.target.files && event.target.files[0]) {
+            let file = event.target.files[0];
+            if (file.type !== "application/vnd.ms-excel" && file.type !== "text/csv") {
+                toast.error("Only accept CSV files...");
+                return;
+            }
+
+            Papa.parse(file, {
+                header: true, // Parse the first row as header
+                complete: function (results) {
+                    let parsedData = results.data;
+                    if (parsedData.length > 0) {
+                        // Check if the parsed data has the expected columns
+                        if (
+                            !parsedData[0].name ||
+                            !parsedData[0].age ||
+                            !parsedData[0].phone
+                        ) {
+                            toast.error("Wrong format Header CSV file");
+                        } else {
+                            // Set the parsed data as the new student list
+                            setStudents(parsedData);
+                        }
+                    } else {
+                        toast.error("No data found in the CSV file");
+                    }
+                },
+            });
+        }
+    };
+
     return (
         <DefaultTemplate>
             <Row className="post-component">
@@ -80,7 +148,25 @@ const Post = () => {
                     <Row>
                         <Col xs={12}>
                             <div className="mb-3 d-flex align-items-center">
-                                <Link to="/create" className="btn btn-primary mb-2 me-2">Add</Link>
+                                <div className="group-btns">
+                                    <Link to="/create" className="btn btn-success mb-2 me-2">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                        Add
+                                    </Link>
+                                    <CSVLink
+                                        data={dataExport}
+                                        filename={"user.csv"}
+                                        className="btn btn-primary mb-2 me-2"
+                                        asyncOnClick={true}
+                                        onClick={getUserExport}
+                                    > <i class="fa-solid fa-file-arrow-down"></i>Export</CSVLink>
+                                    <label htmlFor="test" className="btn btn-warning">
+                                        <i class="fa-solid fa-file-import"></i> Import
+                                    </label>
+                                    <input id="test" type="file" hidden
+                                        onChange={(event) => handleImportCSV(event)}
+                                    />
+                                </div>
                                 <div className="ml-auto">
                                     <input
                                         type="text"
@@ -100,11 +186,33 @@ const Post = () => {
                                 </Button>
                             </div>
 
-                            <Table striped bordered hover>
+                            <Table striped bordered hover style={{textAlign: 'center'}}>
                                 <thead>
                                     <tr>
-                                        <th onClick={() => sortStu('id')}>Id</th>
-                                        <th onClick={() => sortStu('name')}>Name</th>
+                                        <th onClick={() => handleSort(sortBy === "asc" ? "desc" : "asc", "id")}>
+                                            <div className="sort-header">
+                                                <span>Id</span>&ensp;
+                                                <span>
+                                                    {sortField === "id" && sortBy === "asc" ? (
+                                                        <i className="fa-solid fa-arrow-up"></i>
+                                                    ) : (
+                                                        <i className="fa-solid fa-arrow-down"></i>
+                                                    )}
+                                                </span>
+                                            </div>
+                                        </th>
+                                        <th onClick={() => handleSort(sortBy === "asc" ? "desc" : "asc", "name")}>
+                                            <div className="sort-header">
+                                                <span>Name</span>&ensp;
+                                                <span>
+                                                    {sortField === "name" && sortBy === "asc" ? (
+                                                        <i className="fa-solid fa-arrow-up"></i>
+                                                    ) : (
+                                                        <i className="fa-solid fa-arrow-down"></i>
+                                                    )}
+                                                </span>
+                                            </div>
+                                        </th>
                                         <th>Age</th>
                                         <th>Phone</th>
                                         <th>Action</th>
