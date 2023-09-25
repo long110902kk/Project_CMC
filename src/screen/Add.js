@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Add = () => {
@@ -35,6 +35,13 @@ const Add = () => {
             })
             .catch(err => console.log(err));
     }
+
+    useEffect(() => {
+        let email = sessionStorage.getItem('email');
+        if(email==='' || email === null){
+            navigate('/')
+        }
+    })
 
     return (
         <section className="vh-100 gradient-custom">
