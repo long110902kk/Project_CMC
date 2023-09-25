@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Edit = () => {
 
@@ -16,7 +17,7 @@ const Edit = () => {
         event.preventDefault()
         axios.put('http://localhost:9999/students/'+id, data)
         .then(res => {
-            alert("data update successfully")
+            toast.success("Data update succesfully")
             navigate('/post')
         })
     }
@@ -72,5 +73,5 @@ const Edit = () => {
             </div>
         </section>
     );
-};
+}
 export default Edit;
