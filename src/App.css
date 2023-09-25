@@ -1,38 +1,76 @@
-.App {
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.header-app {
+  background-color: rgb(151, 147, 147);
+  line-height: 40px;
+}
+
+.header-app a {
+  color: white;
+  text-decoration: none;
+}
+.header-app-menu:hover {
+  background-color: #66FCF1;
+  color: white;
+  font-weight: bold;
+}
+
+.nav-link-container {
+  margin: 10px;
+}
+
+.footer-component {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.pagination li {
+  margin: 0 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pagination li.active {
+  background-color: #007bff;
+  color: #fff;
+}
+.teacher-info {
+  margin-bottom: 0.5rem; /* Khoảng cách giữa các phần tử */
+  border-bottom: 1px solid #ccc; /* Đường kẻ bên dưới */
+  padding-bottom: 1.5rem; /* Khoảng cách từ đường kẻ đến nội dung phần tử */
+}
+
+.sort-header{
+    i{
+      cursor: pointer;
+      padding: 0 2px;
+    }
+}
+.group-btns{
+  display: flex;
+  gap: 10px;
+  i {
+    padding: 0 2px;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.custom-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  width: 20%; 
 }
